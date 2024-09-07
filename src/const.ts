@@ -1,4 +1,4 @@
-import { EmployeeState } from "./store/employeesTypes";
+import { EmployeeState } from "./types/employeesTypes";
 
 export const EMPLOYEES: EmployeeState = [
   {
