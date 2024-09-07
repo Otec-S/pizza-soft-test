@@ -1,12 +1,15 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
-
   return (
-    <div>
-     test
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<EmployeeList />} />
+        <Route path="/employee-edit/:id" element={<EmployeeEdit />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
