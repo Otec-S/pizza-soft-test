@@ -18,33 +18,7 @@ const columns: TableColumnsType<IEmployee> = [
     title: "Имя",
     dataIndex: "name",
     showSorterTooltip: { target: "full-header" },
-    // filters: [
-    //   {
-    //     text: "Joe",
-    //     value: "Joe",
-    //   },
-    //   {
-    //     text: "Jim",
-    //     value: "Jim",
-    //   },
-    //   {
-    //     text: "Submenu",
-    //     value: "Submenu",
-    //     children: [
-    //       {
-    //         text: "Green",
-    //         value: "Green",
-    //       },
-    //       {
-    //         text: "Black",
-    //         value: "Black",
-    //       },
-    //     ],
-    //   },
-    // ],
-    // specify the condition of filtering result
-    // here is that finding the name started with `value`
-    // onFilter: (value, record) => record.name.indexOf(value as string) === 0,
+
     // defaultSortOrder: "descend",
     defaultSortOrder: "ascend",
     // sorter: (a, b) => a.name.length - b.name.length,
@@ -81,6 +55,37 @@ const columns: TableColumnsType<IEmployee> = [
           return "Не указано";
       }
     },
+    filters: [
+      {
+        text: "Повар",
+        value: "cook",
+      },
+      {
+        text: "Официант",
+        value: "waiter",
+      },
+      {
+        text: "Водитель",
+        value: "driver",
+      },
+      // {
+      //   text: "Submenu",
+      //   value: "Submenu",
+      //   children: [
+      //     {
+      //       text: "Green",
+      //       value: "Green",
+      //     },
+      //     {
+      //       text: "Black",
+      //       value: "Black",
+      //     },
+      //   ],
+      // },
+    ],
+    // specify the condition of filtering result
+    // here is that finding the name started with `value`
+    onFilter: (value, record) => record.role.indexOf(value as string) === 0,
   },
   {
     title: "Телефон",
@@ -146,14 +151,14 @@ const columns: TableColumnsType<IEmployee> = [
 //   },
 // ];
 
-// const onChange: TableProps<DataType>["onChange"] = (
-//   pagination,
-//   filters,
-//   sorter,
-//   extra
-// ) => {
-//   console.log("params", pagination, filters, sorter, extra);
-// };
+const onChange: TableProps<IEmployee>["onChange"] = (
+  pagination,
+  filters,
+  sorter,
+  extra
+) => {
+  console.log("params", pagination, filters, sorter, extra);
+};
 
 const EmployeesList: React.FC = () => {
   const employees = useSelector((state: RootState) => state.employees);
@@ -163,7 +168,7 @@ const EmployeesList: React.FC = () => {
       rowKey="id"
       columns={columns}
       dataSource={employees}
-      // onChange={onChange}
+      onChange={onChange}
       showSorterTooltip={{ target: "sorter-icon" }}
     />
   );
