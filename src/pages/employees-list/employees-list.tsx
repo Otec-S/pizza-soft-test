@@ -68,23 +68,7 @@ const columns: TableColumnsType<IEmployee> = [
         text: "Водитель",
         value: "driver",
       },
-      // {
-      //   text: "Submenu",
-      //   value: "Submenu",
-      //   children: [
-      //     {
-      //       text: "Green",
-      //       value: "Green",
-      //     },
-      //     {
-      //       text: "Black",
-      //       value: "Black",
-      //     },
-      //   ],
-      // },
     ],
-    // specify the condition of filtering result
-    // here is that finding the name started with `value`
     onFilter: (value, record) => record.role.indexOf(value as string) === 0,
   },
   {
@@ -100,6 +84,17 @@ const columns: TableColumnsType<IEmployee> = [
       ) : (
         <Checkbox defaultChecked={false} disabled />
       ),
+    filters: [
+      {
+        text: "В архиве",
+        value: "true",
+      },
+      {
+        text: "Не в архиве",
+        value: "false",
+      },
+    ],
+    onFilter: (value, record) => record.isArchive.toString() === value,
   },
   // {
   //   title: "Age",
