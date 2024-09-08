@@ -1,9 +1,10 @@
 import React from "react";
-import { Table } from "antd";
+import { Checkbox, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
-import { IEmployee } from "../../types/employeesTypes";
+import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
-import { EMPLOYEES } from "../../const";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 // interface DataType {
 //   key: React.Key;
@@ -55,15 +56,45 @@ const columns: TableColumnsType<IEmployee> = [
   },
   {
     title: "Дата рождения",
-    dataIndex: "birthdate",
+    dataIndex: "birthday",
     defaultSortOrder: "descend",
     // sorter: (a, b) =>
     //   new Date(a.birthday).getTime() - new Date(b.birthday).getTime(),
     // render: (date) => new Date(date).toLocaleDateString(),
-    // sorter: (a: IEmployee, b: IEmployee) =>
-    //   new Date(convertToISO(a.birthday)).getTime() -
-    //   new Date(convertToISO(b.birthday)).getTime(),
+    sorter: (a, b) =>
+      new Date(convertToISO(a.birthday)).getTime() -
+      new Date(convertToISO(b.birthday)).getTime(),
     // render: (date: string) => new Date(convertToISO(date)).toLocaleDateString(),
+  },
+  {
+    title: "Должность",
+    dataIndex: "role",
+    render: (role: string) => {
+      switch (role) {
+        case EmployeeRole.Waiter:
+          return "Официант";
+        case EmployeeRole.Cook:
+          return "Повар";
+        case EmployeeRole.Driver:
+          return "Водитель";
+        default:
+          return "Не указано";
+      }
+    },
+  },
+  {
+    title: "Телефон",
+    dataIndex: "phone",
+  },
+  {
+    title: "В архиве",
+    dataIndex: "isArchive",
+    render: (isArchive) =>
+      isArchive ? (
+        <Checkbox defaultChecked disabled />
+      ) : (
+        <Checkbox defaultChecked={false} disabled />
+      ),
   },
   // {
   //   title: "Age",
@@ -124,13 +155,18 @@ const columns: TableColumnsType<IEmployee> = [
 //   console.log("params", pagination, filters, sorter, extra);
 // };
 
-const EmployeesList: React.FC = () => (
-  <Table
-    columns={columns}
-    dataSource={EMPLOYEES}
-    // onChange={onChange}
-    showSorterTooltip={{ target: "sorter-icon" }}
-  />
-);
+const EmployeesList: React.FC = () => {
+  const employees = useSelector((state: RootState) => state.employees);
+
+  return (
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={employees}
+      // onChange={onChange}
+      showSorterTooltip={{ target: "sorter-icon" }}
+    />
+  );
+};
 
 export default EmployeesList;

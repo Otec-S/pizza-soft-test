@@ -8,3 +8,9 @@ export interface IEmployee {
 }
 
 export type EmployeeState = IEmployee[];
+
+export enum EmployeeRole {
+  Waiter = "waiter",
+  Cook = "cook",
+  Driver = "driver",
+}
