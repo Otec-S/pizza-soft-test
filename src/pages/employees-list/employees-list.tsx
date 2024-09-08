@@ -5,6 +5,7 @@ import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { Link } from "react-router-dom";
 
 // interface DataType {
 //   key: React.Key;
@@ -18,15 +19,12 @@ const columns: TableColumnsType<IEmployee> = [
     title: "Имя",
     dataIndex: "name",
     showSorterTooltip: { target: "full-header" },
-
-    // defaultSortOrder: "descend",
     defaultSortOrder: "ascend",
-    // sorter: (a, b) => a.name.length - b.name.length,
-
     // сортировка по алфавиту
     sorter: (a, b) => a.name.localeCompare(b.name),
-
-    // sortDirections: ["descend"],
+    render: (name, record) => (
+      <Link to={`/employee-edit/${record.id}`}>{name}</Link>
+    ),
   },
   {
     title: "Дата рождения",
@@ -76,11 +74,13 @@ const columns: TableColumnsType<IEmployee> = [
     dataIndex: "phone",
   },
   {
-    title: "В архиве",
+    title: "Статус",
     dataIndex: "isArchive",
     render: (isArchive) =>
       isArchive ? (
-        <Checkbox defaultChecked disabled />
+        <Checkbox defaultChecked disabled>
+          В архиве
+        </Checkbox>
       ) : (
         <Checkbox defaultChecked={false} disabled />
       ),
