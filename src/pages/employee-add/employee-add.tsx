@@ -67,6 +67,9 @@ const EmployeeAdd: React.FC = () => {
       name="control-hooks"
       onFinish={onFinish}
       style={{ maxWidth: 600 }}
+      initialValues={{
+        isArchive: false,
+      }}
     >
       <Form.Item
         name="name"
