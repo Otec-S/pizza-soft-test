@@ -2,14 +2,12 @@ import React from "react";
 import {
   Button,
   Checkbox,
-  DatePicker,
   DatePickerProps,
   Form,
   Input,
   Select,
   Space,
 } from "antd";
-import { useDispatch } from "react-redux";
 import { addEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch } from "../../hooks/redux";
@@ -30,6 +28,7 @@ const EmployeeAdd: React.FC = () => {
   // const dispatch = useDispatch();
   const dispatch = useAppDispatch();
 
+  // TODO: убрать?
   const onGenderChange = (value: string) => {
     switch (value) {
       case "male":
@@ -50,7 +49,7 @@ const EmployeeAdd: React.FC = () => {
       ...values,
       id: Date.now(),
     };
-    // TODO:
+    // TODO: убрать?
     console.log("newEmployee:", newEmployee);
     dispatch(addEmployee(newEmployee));
   };
@@ -59,13 +58,13 @@ const EmployeeAdd: React.FC = () => {
     form.resetFields();
   };
 
-  const onFill = () => {
-    form.setFieldsValue({ note: "Hello world!", gender: "male" });
-  };
+  // const onFill = () => {
+  //   form.setFieldsValue({ note: "Hello world!", gender: "male" });
+  // };
 
-  const onBirthdayChange: DatePickerProps["onChange"] = (date, dateString) => {
-    console.log(dateString);
-  };
+  // const onBirthdayChange: DatePickerProps["onChange"] = (date, dateString) => {
+  //   console.log(dateString);
+  // };
 
   return (
     <Form
@@ -130,10 +129,6 @@ const EmployeeAdd: React.FC = () => {
           <Option value="driver">Водитель</Option>
         </Select>
       </Form.Item>
-
-      {/* <Form.Item name="isArchive" label="Статус">
-        <Input />
-      </Form.Item> */}
 
       <Form.Item label="Статус" name="isArchive" valuePropName="checked">
         <Checkbox>В архиве</Checkbox>

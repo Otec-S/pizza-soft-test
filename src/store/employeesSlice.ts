@@ -8,9 +8,7 @@ const employeesSlice = createSlice({
     addEmployee(state, action) {
       state.push(action.payload);
     },
-    // removeEmployee(state, action) {
-    //   return state.filter((employee) => employee.id !== action.payload);
-    // },
+    // TODO: применить
     editEmployee(state, action) {
       const index = state.findIndex(
         (employee) => employee.id === action.payload.id
