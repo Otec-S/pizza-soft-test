@@ -5,6 +5,7 @@ import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux";
+import Title from "antd/es/typography/Title";
 
 const columns: TableColumnsType<IEmployee> = [
   {
@@ -106,6 +107,7 @@ const EmployeesList: React.FC = () => {
 
   return (
     <>
+      <Title>Список сотрудников</Title>
       <Table
         rowKey="id"
         columns={columns}

@@ -4,6 +4,7 @@ import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch } from "../../hooks/redux";
 import { useNavigate } from "react-router-dom";
 import EmployeeForm from "../../components/employee-form/employee-form";
+import Title from "antd/es/typography/Title";
 
 const EmployeeAdd: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +29,12 @@ const EmployeeAdd: React.FC = () => {
     isArchive: false,
   };
 
-  return <EmployeeForm onFinish={onFinish} initialValues={initialValues} />;
+  return (
+    <>
+      <Title>Добавление новых сотрудников</Title>
+      <EmployeeForm onFinish={onFinish} initialValues={initialValues} />
+    </>
+  );
 };
 
 export default EmployeeAdd;
