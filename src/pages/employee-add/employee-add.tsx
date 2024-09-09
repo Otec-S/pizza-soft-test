@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Button,
-  Checkbox,
-  DatePickerProps,
-  Form,
-  Input,
-  Select,
-  Space,
-} from "antd";
+import { Button, Checkbox, Form, Input, Select, Space } from "antd";
 import { addEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch } from "../../hooks/redux";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -25,8 +18,8 @@ const tailLayout = {
 
 const EmployeeAdd: React.FC = () => {
   const [form] = Form.useForm();
-  // const dispatch = useDispatch();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   // TODO: убрать?
   const onGenderChange = (value: string) => {
@@ -52,6 +45,7 @@ const EmployeeAdd: React.FC = () => {
     // TODO: убрать?
     console.log("newEmployee:", newEmployee);
     dispatch(addEmployee(newEmployee));
+    navigate("/");
   };
 
   const onReset = () => {
@@ -142,11 +136,7 @@ const EmployeeAdd: React.FC = () => {
           <Button htmlType="button" onClick={onReset}>
             Очистить поля
           </Button>
-          <Button
-            type="link"
-            htmlType="button"
-            // onClick={onFill}
-          >
+          <Button type="link" htmlType="button" onClick={() => navigate("/")}>
             Назад
           </Button>
         </Space>
