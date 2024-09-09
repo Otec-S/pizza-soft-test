@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { editEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -12,6 +12,15 @@ const EmployeeEdit: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const employees = useAppSelector((state) => state.employeesReducer);
   const employee = employees.find((employee) => employee.id === Number(id));
+
+  useEffect(() => {
+    if (!employee) {
+      // Если сотрудник не существует, перенаправляем на страницу 404
+      navigate("/404", { replace: true });
+    }
+  }, [employee, navigate]);
+
+  if (!employee) return null; // Возвращаем ничего, пока перенаправление выполняется
 
   const initialValues = employee
     ? {
