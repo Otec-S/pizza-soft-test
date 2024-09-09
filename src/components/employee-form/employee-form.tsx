@@ -7,6 +7,7 @@ import Space from "antd/es/space";
 import { useNavigate } from "react-router-dom";
 import { IEmployee } from "../../types/employeesTypes";
 import { useEffect } from "react";
+import "./employee-form.scss";
 
 interface IEmployeeFormProps {
   onFinish: (values: IEmployee) => void;
@@ -46,7 +47,7 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
       form={form}
       name="control-hooks"
       onFinish={onFinish}
-      style={{ maxWidth: 600 }}
+      className="employee-form"
     >
       <Form.Item
         name="name"

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import EmployeesList from "./pages/employees-list/employees-list";
 import EmployeeEdit from "./pages/employee-edit/employee-edit";
 import EmployeeAdd from "./pages/employee-add/employee-add";
@@ -19,13 +19,11 @@ function App() {
     <Router>
       <Layout>
         <AntHeader />
-        <Content style={{ padding: "0 48px" }}>
+        <Content className="app-content">
           <div
-            // TODO: SASS ?
+            className="app-inner-content"
             style={{
               background: colorBgContainer,
-              minHeight: "calc(100vh - 147px)",
-              padding: 24,
               borderRadius: borderRadiusLG,
             }}
           >

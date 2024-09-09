@@ -1,9 +1,10 @@
 import Layout from "antd/es/layout";
+import "./footer.scss";
 
 const AntFooter = () => {
   const { Footer } = Layout;
   return (
-    <Footer style={{ textAlign: "center" }}>
+    <Footer className="antfooter">
       Выполнено{" "}
       <a href="https://t.me/Otec_S" target="_blank" rel="noopener noreferrer">
         Сергеем Григорашем

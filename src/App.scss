@@ -1,0 +1,10 @@
+@import "./variables.scss";
+
+.app-content {
+  padding: 0 48px;
+
+  .app-inner-content {
+    min-height: $minHeightCalc;
+    padding: $paddingSize;
+  }
+}
