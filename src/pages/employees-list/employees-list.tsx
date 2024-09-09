@@ -6,6 +6,7 @@ import convertToISO from "../../helpers/convertToISO";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/redux";
 
 // interface DataType {
 //   key: React.Key;
@@ -156,7 +157,8 @@ const onChange: TableProps<IEmployee>["onChange"] = (
 };
 
 const EmployeesList: React.FC = () => {
-  const employees = useSelector((state: RootState) => state.employees);
+  // const employees = useSelector((state: RootState) => state.employees);
+  const employees = useAppSelector((state) => state.employeesReducer);
 
   const navigate = useNavigate();
 

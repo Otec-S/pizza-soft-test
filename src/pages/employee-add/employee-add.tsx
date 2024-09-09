@@ -12,6 +12,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
+import { useAppDispatch } from "../../hooks/redux";
 
 const { Option } = Select;
 
@@ -26,7 +27,8 @@ const tailLayout = {
 
 const EmployeeAdd: React.FC = () => {
   const [form] = Form.useForm();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onGenderChange = (value: string) => {
     switch (value) {
@@ -50,8 +52,7 @@ const EmployeeAdd: React.FC = () => {
     };
     // TODO:
     console.log("newEmployee:", newEmployee);
-    // dispatch(addEmployee(newEmployee));
-    dispatch({ type: "employees/addEmployee", payload: newEmployee });
+    dispatch(addEmployee(newEmployee));
   };
 
   const onReset = () => {
