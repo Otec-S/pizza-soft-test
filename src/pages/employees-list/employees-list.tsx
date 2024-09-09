@@ -1,11 +1,11 @@
 import React from "react";
-import { Checkbox, Table } from "antd";
+import { Button, Checkbox, Space, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // interface DataType {
 //   key: React.Key;
@@ -158,14 +158,27 @@ const onChange: TableProps<IEmployee>["onChange"] = (
 const EmployeesList: React.FC = () => {
   const employees = useSelector((state: RootState) => state.employees);
 
+  const navigate = useNavigate();
+
+  const handleEmployeeButtonClick = () => {
+    navigate("/employee-add");
+  };
+
   return (
-    <Table
-      rowKey="id"
-      columns={columns}
-      dataSource={employees}
-      onChange={onChange}
-      showSorterTooltip={{ target: "sorter-icon" }}
-    />
+    <>
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={employees}
+        onChange={onChange}
+        showSorterTooltip={{ target: "sorter-icon" }}
+      />
+      <Space>
+        <Button type="primary" onClick={handleEmployeeButtonClick}>
+          Добавить сотрудника
+        </Button>
+      </Space>
+    </>
   );
 };
 
