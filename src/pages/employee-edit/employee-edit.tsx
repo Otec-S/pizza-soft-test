@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input, Select, Space } from "antd";
-import { addEmployee, editEmployee } from "../../store/employeesSlice";
+import { editEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,7 +21,6 @@ const EmployeeEdit: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // получаем id из url
   const { id } = useParams<{ id: string }>();
   const employees = useAppSelector((state) => state.employeesReducer);
   const employee = employees.find((employee) => employee.id === Number(id));
@@ -38,22 +37,6 @@ const EmployeeEdit: React.FC = () => {
     }
   }, [employee, form]);
 
-  // TODO: убрать?
-  const onGenderChange = (value: string) => {
-    switch (value) {
-      case "male":
-        form.setFieldsValue({ note: "Hi, man!" });
-        break;
-      case "female":
-        form.setFieldsValue({ note: "Hi, lady!" });
-        break;
-      case "other":
-        form.setFieldsValue({ note: "Hi there!" });
-        break;
-      default:
-    }
-  };
-
   const onFinish = (values: IEmployee) => {
     const updatedEmployee = {
       ...values,
@@ -69,14 +52,6 @@ const EmployeeEdit: React.FC = () => {
     form.resetFields();
   };
 
-  // const onFill = () => {
-  //   form.setFieldsValue({ note: "Hello world!", gender: "male" });
-  // };
-
-  // const onBirthdayChange: DatePickerProps["onChange"] = (date, dateString) => {
-  //   console.log(dateString);
-  // };
-
   return (
     <Form
       {...layout}
@@ -84,9 +59,6 @@ const EmployeeEdit: React.FC = () => {
       name="control-hooks"
       onFinish={onFinish}
       style={{ maxWidth: 600 }}
-      // initialValues={{
-      //   isArchive: false,
-      // }}
     >
       <Form.Item
         name="name"
@@ -133,11 +105,7 @@ const EmployeeEdit: React.FC = () => {
         label="Должность"
         rules={[{ required: true, message: "Пожалуйста, выберите должность" }]}
       >
-        <Select
-          placeholder="Выберите должность"
-          onChange={onGenderChange}
-          allowClear
-        >
+        <Select placeholder="Выберите должность" allowClear>
           <Option value="cook">Повар</Option>
           <Option value="waiter">Официант</Option>
           <Option value="driver">Водитель</Option>

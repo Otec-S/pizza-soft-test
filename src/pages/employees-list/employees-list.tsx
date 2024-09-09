@@ -12,7 +12,6 @@ const columns: TableColumnsType<IEmployee> = [
     dataIndex: "name",
     showSorterTooltip: { target: "full-header" },
     defaultSortOrder: "ascend",
-    // сортировка по алфавиту
     sorter: (a, b) => a.name.localeCompare(b.name),
     render: (name, record) => (
       <Link to={`/employee-edit/${record.id}`}>{name}</Link>

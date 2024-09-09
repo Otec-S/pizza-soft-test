@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input, Select, Space } from "antd";
 import { addEmployee } from "../../store/employeesSlice";
 import { IEmployee } from "../../types/employeesTypes";
@@ -21,22 +21,6 @@ const EmployeeAdd: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // TODO: убрать?
-  const onGenderChange = (value: string) => {
-    switch (value) {
-      case "male":
-        form.setFieldsValue({ note: "Hi, man!" });
-        break;
-      case "female":
-        form.setFieldsValue({ note: "Hi, lady!" });
-        break;
-      case "other":
-        form.setFieldsValue({ note: "Hi there!" });
-        break;
-      default:
-    }
-  };
-
   const onFinish = (values: IEmployee) => {
     const newEmployee = {
       ...values,
@@ -52,13 +36,11 @@ const EmployeeAdd: React.FC = () => {
     form.resetFields();
   };
 
-  // const onFill = () => {
-  //   form.setFieldsValue({ note: "Hello world!", gender: "male" });
-  // };
-
-  // const onBirthdayChange: DatePickerProps["onChange"] = (date, dateString) => {
-  //   console.log(dateString);
-  // };
+  useEffect(() => {
+    form.setFieldsValue({
+      isArchive: false,
+    });
+  }, [form]);
 
   return (
     <Form
@@ -67,9 +49,6 @@ const EmployeeAdd: React.FC = () => {
       name="control-hooks"
       onFinish={onFinish}
       style={{ maxWidth: 600 }}
-      initialValues={{
-        isArchive: false,
-      }}
     >
       <Form.Item
         name="name"
@@ -116,11 +95,7 @@ const EmployeeAdd: React.FC = () => {
         label="Должность"
         rules={[{ required: true, message: "Пожалуйста, выберите должность" }]}
       >
-        <Select
-          placeholder="Выберите должность"
-          onChange={onGenderChange}
-          allowClear
-        >
+        <Select placeholder="Выберите должность" allowClear>
           <Option value="cook">Повар</Option>
           <Option value="waiter">Официант</Option>
           <Option value="driver">Водитель</Option>
