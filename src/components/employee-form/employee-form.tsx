@@ -37,7 +37,7 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
   };
 
   useEffect(() => {
-    form.setFieldsValue(initialValues); // Устанавливаем начальные значения
+    form.setFieldsValue(initialValues);
   }, [form, initialValues]);
 
   return (
