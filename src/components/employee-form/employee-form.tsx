@@ -3,7 +3,6 @@ import Checkbox from "antd/es/checkbox";
 import Form from "antd/es/form";
 import Input from "antd/es/input";
 import Select from "antd/es/select";
-import Space from "antd/es/space";
 import { useNavigate } from "react-router-dom";
 import { IEmployee } from "../../types/employeesTypes";
 import { useEffect } from "react";
@@ -25,10 +24,6 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
     wrapperCol: { span: 16 },
   };
 
-  const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-  };
-
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
@@ -42,71 +37,72 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
   }, [form, initialValues]);
 
   return (
-    <Form
-      {...layout}
-      form={form}
-      name="control-hooks"
-      onFinish={onFinish}
-      className="employee-form"
-    >
-      <Form.Item
-        name="name"
-        label="Имя сотрудника"
-        rules={[
-          { required: true, message: "Пожалуйста, введите имя и фамилию" },
-        ]}
+    <>
+      <Form
+        {...layout}
+        form={form}
+        name="control-hooks"
+        onFinish={onFinish}
+        className="employee-form"
       >
-        <Input autoFocus allowClear />
-      </Form.Item>
+        <Form.Item
+          name="name"
+          label="Имя сотрудника"
+          rules={[
+            { required: true, message: "Пожалуйста, введите имя и фамилию" },
+          ]}
+        >
+          <Input autoFocus allowClear />
+        </Form.Item>
 
-      <Form.Item
-        name="phone"
-        label="Телефон"
-        rules={[
-          {
-            pattern: new RegExp(/^\+7 \(\d{3}\) \d{3}-\d{4}$/),
-            message: "Введите в формате +7 (777) 777-7777",
-          },
-          { required: true, message: "Пожалуйста, введите номер телефона" },
-        ]}
-      >
-        <Input.Password allowClear />
-      </Form.Item>
+        <Form.Item
+          name="phone"
+          label="Телефон"
+          rules={[
+            {
+              pattern: new RegExp(/^\+7 \(\d{3}\) \d{3}-\d{4}$/),
+              message: "Введите в формате +7 (777) 777-7777",
+            },
+            { required: true, message: "Пожалуйста, введите номер телефона" },
+          ]}
+        >
+          <Input.Password allowClear />
+        </Form.Item>
 
-      <Form.Item
-        name="birthday"
-        label="Дата рождения"
-        rules={[
-          {
-            pattern: new RegExp(
-              /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.(\d{4})$/
-            ),
-            message: "Введите корректную дату рождения в формате ДД.ММ.ГГГГ",
-          },
-          { required: true, message: "Пожалуйста, введите дату рождения" },
-        ]}
-      >
-        <Input.Password allowClear />
-      </Form.Item>
+        <Form.Item
+          name="birthday"
+          label="Дата рождения"
+          rules={[
+            {
+              pattern: new RegExp(
+                /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.(\d{4})$/
+              ),
+              message: "Введите корректную дату рождения в формате ДД.ММ.ГГГГ",
+            },
+            { required: true, message: "Пожалуйста, введите дату рождения" },
+          ]}
+        >
+          <Input.Password allowClear />
+        </Form.Item>
 
-      <Form.Item
-        name="role"
-        label="Должность"
-        rules={[{ required: true, message: "Пожалуйста, выберите должность" }]}
-      >
-        <Select placeholder="Выберите должность" allowClear>
-          <Option value="cook">Повар</Option>
-          <Option value="waiter">Официант</Option>
-          <Option value="driver">Водитель</Option>
-        </Select>
-      </Form.Item>
+        <Form.Item
+          name="role"
+          label="Должность"
+          rules={[
+            { required: true, message: "Пожалуйста, выберите должность" },
+          ]}
+        >
+          <Select placeholder="Выберите должность" allowClear>
+            <Option value="cook">Повар</Option>
+            <Option value="waiter">Официант</Option>
+            <Option value="driver">Водитель</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item label="Статус" name="isArchive" valuePropName="checked">
+          <Checkbox>В архиве</Checkbox>
+        </Form.Item>
 
-      <Form.Item label="Статус" name="isArchive" valuePropName="checked">
-        <Checkbox>В архиве</Checkbox>
-      </Form.Item>
-
-      <Form.Item {...tailLayout}>
-        <Space>
+        <div className="buttons-block">
           <Button type="primary" htmlType="submit">
             Сохранить
           </Button>
@@ -116,9 +112,9 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
           <Button type="link" htmlType="button" onClick={() => navigate("/")}>
             Назад
           </Button>
-        </Space>
-      </Form.Item>
-    </Form>
+        </div>
+      </Form>
+    </>
   );
 };
 

@@ -20,5 +20,8 @@
     @media (max-width: 768px) {
       font-size: $pageTitleFontSizeS;
     }
+    @media (max-width: 360px) {
+      font-size: $pageTitleFontSizeXS;
+    }
   }
 }

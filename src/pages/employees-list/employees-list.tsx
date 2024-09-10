@@ -5,7 +5,7 @@ import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux";
-import "../../variables.scss";
+import "./employees-list.scss";
 
 const columns: TableColumnsType<IEmployee> = [
   {
@@ -118,8 +118,12 @@ const EmployeesList: React.FC = () => {
         />
       </div>
       <Space>
-        <Button type="primary" onClick={handleEmployeeButtonClick}>
-          Добавить сотрудника
+        <Button
+          className="add-button"
+          type="primary"
+          onClick={handleEmployeeButtonClick}
+        >
+          Добавить
         </Button>
       </Space>
     </>
