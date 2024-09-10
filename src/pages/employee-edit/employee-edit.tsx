@@ -4,7 +4,7 @@ import { IEmployee } from "../../types/employeesTypes";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useNavigate, useParams } from "react-router-dom";
 import EmployeeForm from "../../components/employee-form/employee-form";
-import Title from "antd/es/typography/Title";
+import "../../variables.scss";
 
 const EmployeeEdit: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -52,7 +52,7 @@ const EmployeeEdit: React.FC = () => {
 
   return (
     <>
-      <Title>Изменение данных о сотрудниках</Title>
+      <h1 className="page-title">Изменение данных о сотрудниках</h1>
       <EmployeeForm onFinish={onFinish} initialValues={initialValues} />
     </>
   );

@@ -5,7 +5,7 @@ import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux";
-import Title from "antd/es/typography/Title";
+import "../../variables.scss";
 
 const columns: TableColumnsType<IEmployee> = [
   {
@@ -107,14 +107,16 @@ const EmployeesList: React.FC = () => {
 
   return (
     <>
-      <Title>Список сотрудников</Title>
-      <Table
-        rowKey="id"
-        columns={columns}
-        dataSource={employees}
-        onChange={onChange}
-        showSorterTooltip={{ target: "sorter-icon" }}
-      />
+      <h1 className="page-title">Список сотрудников</h1>
+      <div className="table-width-wrapper">
+        <Table
+          rowKey="id"
+          columns={columns}
+          dataSource={employees}
+          onChange={onChange}
+          showSorterTooltip={{ target: "sorter-icon" }}
+        />
+      </div>
       <Space>
         <Button type="primary" onClick={handleEmployeeButtonClick}>
           Добавить сотрудника

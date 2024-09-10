@@ -15,5 +15,10 @@
   .antheader-title {
     color: $fontColor;
     margin: 0;
+    font-size: $pageTitleFontSizeM;
+
+    @media (max-width: 768px) {
+      font-size: $pageTitleFontSizeS;
+    }
   }
 }

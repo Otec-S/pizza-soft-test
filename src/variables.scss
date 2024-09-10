@@ -1,3 +1,22 @@
 $paddingSize: 24px;
 $fontColor: white;
 $minHeightCalc: "calc(100vh - 147px)";
+$pageTitleFontSizeL: 2rem;
+$pageTitleFontSizeM: 1.5rem;
+$pageTitleFontSizeS: 1rem;
+
+.page-title {
+  font-size: $pageTitleFontSizeL;
+
+  @media (max-width: 768px) {
+    font-size: $pageTitleFontSizeM;
+  }
+
+  @media (max-width: 480px) {
+    font-size: $pageTitleFontSizeS;
+  }
+}
+
+.table-width-wrapper {
+  overflow-x: auto;
+}
