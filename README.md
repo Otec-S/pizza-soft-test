@@ -1,4 +1,4 @@
-# Employee Management System
+# Тестовое задание для компании "PizzaSoft"
 
 ## Функционал
 
