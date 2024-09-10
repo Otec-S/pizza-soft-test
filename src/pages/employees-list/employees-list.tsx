@@ -98,14 +98,14 @@ const EmployeesList: React.FC = () => {
   return (
     <>
       <h1 className="page-title">Список сотрудников</h1>
-      <div className="table-width-wrapper">
+      <section className="table-width-wrapper">
         <Table
           rowKey="id"
           columns={columns}
           dataSource={employees}
           showSorterTooltip={{ target: "sorter-icon" }}
         />
-      </div>
+      </section>
       <Space>
         <Button
           className="add-button"

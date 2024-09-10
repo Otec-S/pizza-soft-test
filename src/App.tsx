@@ -20,7 +20,7 @@ function App() {
       <Layout>
         <AntHeader />
         <Content className="app-content">
-          <div
+          <main
             className="app-inner-content"
             style={{
               background: colorBgContainer,
@@ -34,7 +34,7 @@ function App() {
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </div>
+          </main>
         </Content>
         <AntFooter />
       </Layout>
