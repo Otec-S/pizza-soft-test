@@ -14,15 +14,6 @@ const EmployeeEdit: React.FC = () => {
   const employees = useAppSelector((state) => state.employeesReducer);
   const employee = employees.find((employee) => employee.id === Number(id));
 
-  useEffect(() => {
-    if (!employee) {
-      // Если сотрудник не существует, перенаправляем на страницу 404
-      navigate("/404", { replace: true });
-    }
-  }, [employee, navigate]);
-
-  if (!employee) return null; // Возвращаем ничего, пока перенаправление выполняется
-
   const initialValues = employee
     ? {
         name: employee.name,
@@ -44,11 +35,17 @@ const EmployeeEdit: React.FC = () => {
       ...values,
       id: Number(id),
     };
-    // TODO: убрать?
-    console.log("updatedEmployee:", updatedEmployee);
     dispatch(editEmployee(updatedEmployee));
     navigate("/");
   };
+
+  useEffect(() => {
+    if (!employee) {
+      navigate("/404", { replace: true });
+    }
+  }, [employee, navigate]);
+
+  if (!employee) return null;
 
   return (
     <>

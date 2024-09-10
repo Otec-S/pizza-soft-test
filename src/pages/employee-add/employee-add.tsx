@@ -9,24 +9,21 @@ import "../../variables.scss";
 const EmployeeAdd: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const onFinish = (values: IEmployee) => {
-    const newEmployee = {
-      ...values,
-      id: Date.now(),
-    };
-    // TODO: убрать?
-    console.log("newEmployee:", newEmployee);
-    dispatch(addEmployee(newEmployee));
-    navigate("/");
-  };
-
   const initialValues = {
     name: "",
     phone: "",
     birthday: "",
     role: "",
     isArchive: false,
+  };
+
+  const onFinish = (values: IEmployee) => {
+    const newEmployee = {
+      ...values,
+      id: Date.now(),
+    };
+    dispatch(addEmployee(newEmployee));
+    navigate("/");
   };
 
   return (

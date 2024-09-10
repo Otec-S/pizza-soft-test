@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
     <Result
       status="404"
       title="404"
-      subTitle="Sorry, the page you visited does not exist."
+      subTitle="Извините, такой страницы у нас нет"
       extra={
         <Button type="primary" onClick={() => navigate("/")}>
           Домой

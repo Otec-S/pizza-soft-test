@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Space, Table } from "antd";
-import type { TableColumnsType, TableProps } from "antd";
+import type { TableColumnsType } from "antd";
 import { EmployeeRole, IEmployee } from "../../types/employeesTypes";
 import convertToISO from "../../helpers/convertToISO";
 import { Link, useNavigate } from "react-router-dom";
@@ -86,16 +86,6 @@ const columns: TableColumnsType<IEmployee> = [
   },
 ];
 
-// TODO: убрать?
-const onChange: TableProps<IEmployee>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-
 const EmployeesList: React.FC = () => {
   const employees = useAppSelector((state) => state.employeesReducer);
 
@@ -113,7 +103,6 @@ const EmployeesList: React.FC = () => {
           rowKey="id"
           columns={columns}
           dataSource={employees}
-          onChange={onChange}
           showSorterTooltip={{ target: "sorter-icon" }}
         />
       </div>
