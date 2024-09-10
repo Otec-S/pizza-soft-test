@@ -28,10 +28,16 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="/" element={<EmployeesList />} />
-              <Route path="/employee-edit/:id" element={<EmployeeEdit />} />
-              <Route path="/employee-add" element={<EmployeeAdd />} />
-              {/* <Route path="/404" element={<NotFound />} /> */}
+              <Route path="/pizza-soft-test" element={<EmployeesList />} />
+              <Route
+                path="/pizza-soft-test/employee-edit/:id"
+                element={<EmployeeEdit />}
+              />
+              <Route
+                path="/pizza-soft-test/employee-add"
+                element={<EmployeeAdd />}
+              />
+              <Route path="/pizza-soft-test/404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

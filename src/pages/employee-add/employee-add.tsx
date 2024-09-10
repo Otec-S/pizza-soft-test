@@ -23,7 +23,7 @@ const EmployeeAdd: React.FC = () => {
       id: Date.now(),
     };
     dispatch(addEmployee(newEmployee));
-    navigate("/");
+    navigate("/pizza-soft-test");
   };
 
   return (
