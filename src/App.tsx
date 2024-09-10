@@ -28,7 +28,7 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="/pizza-soft-test" element={<EmployeesList />} />
+              <Route path="/pizza-soft-test/" element={<EmployeesList />} />
               <Route
                 path="/pizza-soft-test/employee-edit/:id"
                 element={<EmployeeEdit />}
