@@ -1,51 +1,48 @@
-# React + TypeScript + Vite
+# Employee Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Функционал
 
-Currently, two official plugins are available:
+- **Список сотрудников компании:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - Содержит необходимые поля, включая имя, дату рождения, должность и статус.
 
-## Expanding the ESLint configuration
+- **Сортировка:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - Стартовая сортировка — по алфавиту имен сотрудников.
+  - Возможность сортировки по именам сотрудников в прямом и обратном порядке, путем нажатия на стрелочки рядом с заголовком столбца «Имя».
+  - Сортировка по датам рождения сотрудников в прямом и обратном порядке, с помощью стрелочек рядом с заголовком столбца «Дата рождения».
 
-- Configure the top-level `parserOptions` property like this:
+- **Фильтрация:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  - По должности сотрудников — через значок фильтра рядом с заголовком столбца «Должность».
+  - По статусу сотрудников (в архиве или нет) — через значок фильтра рядом с заголовком столбца «Статус».
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Добавление нового сотрудника:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+  - Нажатие на кнопку «Добавить» под таблицей открывает форму добавления нового сотрудника.
+  - Все поля формы обязательны.
+  - Поля телефона и даты рождения валидируются регулярными выражениями и имеют маски.
+  - Должность выбирается из выпадающего списка.
+  - Под формой расположены кнопки для:
+    - Сохранения изменений (возможность сохранения также путем нажатия на Enter).
+    - Очистки полей ввода.
+    - Возврата назад в список сотрудников.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# pizza-soft-test
+- **Дополнительные возможности:**
+  - На страницу списка сотрудников можно вернуться, нажав на хедер любой страницы.
+  - При нажатии на имя сотрудника в списке открывается форма для изменения данных, предзаполненная данными сотрудника.
+  - По нажатию на имя автора страницы в футере, можно перейти в его Телеграм.
+  - Адаптивная верстка обеспечивает удобное использование на различных устройствах.
+
+## Технологии проекта
+
+1. **React** на TypeScript
+2. **Redux Toolkit (RTK)** в качестве стейт-менеджера
+3. **Ant Design** в качестве UI библиотеки
+4. **React Router DOM** для роутинга
+5. **SASS** как CSS препроцессор
+6. **Vite** как сборщик
+
+---
+
+Проект предоставляет удобный интерфейс для управления списком сотрудников и может служить основой для разработки более сложных систем управления персоналом.
