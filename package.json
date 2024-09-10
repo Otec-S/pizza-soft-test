@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://Otec-S.github.io/pizza-soft-test",
+  "homepage": "https://otec-S.github.io/pizza-soft-test/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "antd": "^5.20.5",

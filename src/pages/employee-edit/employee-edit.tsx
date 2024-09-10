@@ -36,7 +36,7 @@ const EmployeeEdit: React.FC = () => {
       id: Number(id),
     };
     dispatch(editEmployee(updatedEmployee));
-    navigate("/pizza-soft-test");
+    navigate("/");
   };
 
   useEffect(() => {

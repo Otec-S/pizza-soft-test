@@ -8,7 +8,7 @@ const AntHeader = () => {
   const { Header } = Layout;
 
   return (
-    <Link to="/pizza-soft-test">
+    <Link to="/">
       <Header className="antheader">
         <img
           src={logo}

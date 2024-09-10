@@ -109,11 +109,7 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
           <Button htmlType="button" onClick={onReset}>
             Очистить поля
           </Button>
-          <Button
-            type="link"
-            htmlType="button"
-            onClick={() => navigate("/pizza-soft-test")}
-          >
+          <Button type="link" htmlType="button" onClick={() => navigate("/")}>
             Назад
           </Button>
         </div>

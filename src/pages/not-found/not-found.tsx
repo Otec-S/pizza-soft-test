@@ -10,7 +10,7 @@ const NotFound: React.FC = () => {
       title="404"
       subTitle="Извините, такой страницы у нас нет"
       extra={
-        <Button type="primary" onClick={() => navigate("/pizza-soft-test")}>
+        <Button type="primary" onClick={() => navigate("/")}>
           Домой
         </Button>
       }
