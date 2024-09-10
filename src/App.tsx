@@ -38,7 +38,7 @@ function App() {
                 element={<EmployeeAdd />}
               />
               <Route path="/pizza-soft-test/404" element={<NotFound />} />
-              <Route path="*" element={<NotFound />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
           </main>
         </Content>
